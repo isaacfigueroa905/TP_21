@@ -23,6 +23,13 @@ typedef struct
 } Employee;
 
 
+/**
+ * @fn int GeneraLegajo()
+ * @brief Carga legajos automaticamente, incrementado 1 a la variable estatica en cada llamada.
+ *
+ * @return  El valor actual de la variable estatica.
+ */
+int GeneraLegajo();
 
 /**
  * @fn int ContadorDeEmpleados(Employee[], int)
@@ -44,7 +51,7 @@ int ContadorDeEmpleados(Employee[], int);
 float TotalSueldos(Employee [], int);
 /**
  * @fn int ModificarDatoEmpleado(Employee[], int)
- * @brief Modifica algun campo del empleado.
+ * @brief Modifica algun campo del empleado seleccionado por el usuario.
  *
  * @param int: tamaño del array.
  * @param Employee:array.
@@ -64,7 +71,7 @@ int EliminarEmpleado(Employee[], int);
 
 /**
  * @fn void OrdenarEmpleadosPorSector(Employee[], int)
- * @brief  Ordena empleados por sector, en caso de ser iguales compara por apellido usando la funcion creada para tal fin.
+ * @brief  Ordena empleados por sector.
  *
  * @param int: tamaño del array.
  * @param Employee:array.
@@ -73,7 +80,7 @@ void OrdenarEmpleadosPorSector(Employee[], int);
 
 /**
  * @fn void OrdenarEmpleadosPorApellido(Employee[], int)
- * @brief Ordena empleados por apellido, en caso de ser iguales compara por nombre.
+ * @brief Ordena empleados por apellido.
  *
  * @param int: tamaño del array.
  * @param Employee:array.

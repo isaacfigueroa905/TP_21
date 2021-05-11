@@ -114,6 +114,10 @@ int main(void)
 	            	    {
 	            			  printf("\n\t\t No se encontro legajo!\n");
 	            		}
+	            		if(retornoEliminar==-1)
+	            		{
+	            			printf("\n\t\t Eliminacion cancelada. . .\n ");
+	            		}
 
 
 	            	}
@@ -130,6 +134,7 @@ int main(void)
 	            	{
 	            		do
 	            		{
+
 	            			  printf("\n\tSUBMENU DE INFORMES ");
 	            			  printf("\n\t\t\t 1.Mostrar nomina por apellido");
 	            			  printf("\n\t\t\t 2.Mostrar nomina por sector");
@@ -169,6 +174,10 @@ int main(void)
 	            			            			printf("\n\t\t El sueldo total de los empleados es : %.2f\n",sueldosEmpleados);
 	            			            			break;
 
+	            			            		case 0:
+	            			            			printf("\n\t\t volviendo al menu . . . ");
+	            			            			break;
+
 	            			         }
 
 	          	        }while(opcionSubmenu!=0);
@@ -191,7 +200,6 @@ int main(void)
 	            break;
 
 	        }
-
 
 
 

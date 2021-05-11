@@ -13,6 +13,13 @@
 #define OCUPADO 1
 #define VACIO 0
 
+static int IdIncremental = 0;
+
+int GeneraLegajo()
+{
+
+	return IdIncremental += 1;
+}
 
 void InicializadorEmpleados(Employee listado[] ,int tam)
 {
@@ -20,6 +27,7 @@ void InicializadorEmpleados(Employee listado[] ,int tam)
     for(i=0; i<tam; i++)
     {
         listado[i].isEmpty=VACIO;
+
     }
 }
 
@@ -46,6 +54,7 @@ Employee Ingreso()
 
     unEmpleado.isEmpty=OCUPADO;
 
+
     return unEmpleado;
 }
 
@@ -62,6 +71,7 @@ int BuscarLibre(Employee listado[], int tam)
             index=i;
             break;
         }
+
     }
 
 
@@ -69,15 +79,16 @@ int BuscarLibre(Employee listado[], int tam)
 }
 
 
-
-int CargarEmpleados(Employee listado[] , int tam)
+ int CargarEmpleados(Employee listado[] , int tam)
 {
-   int i;
+   static int i;
    i=BuscarLibre(listado, tam);
-   if(i!=-1)
+
+   if(i!=-1  )
    {
        listado[i] = Ingreso();//exito
-       listado[i].id=i;//carga de legajo
+       listado[i].id    = GeneraLegajo();//carga de legajo
+
    }
 
    return i;
@@ -86,11 +97,12 @@ int CargarEmpleados(Employee listado[] , int tam)
 }
 
 
+
 void MostrarEmpleado(Employee unEmpleado)
 {
     printf("\n%8d\t%8s\t%9s\t%9.2f\t%7d\n",unEmpleado.id,unEmpleado.nombre, unEmpleado.apellido,
     		                                             unEmpleado.salario, unEmpleado.sector );
-    printf("\t________________________________________________________________\n");
+    printf("_______________________________________________________________________\n");
 }
 
 
@@ -154,12 +166,6 @@ void OrdenarEmpleadosPorSector(Employee listado[], int tam)
                 listado[i]=listado[j];
                 listado[j]=auxEmpleado;
             }
-            if(listado[i].sector == listado[j].sector)
-            {
-                OrdenarEmpleadosPorApellido(listado,tam);//mismo sector se ordena por apellido/nombre
-            }
-
-
         }
     }
 }
@@ -190,8 +196,9 @@ int EliminarEmpleado(Employee listado[], int tam)
     	   }
     	   else
     	   {
-    		   printf("\n\t\t volviendo al menu!!!\n\n");//niega
-    		   retorno=-1;
+
+    		   retorno=-1;//niega
+    		   break;
     	   }
 
 
@@ -247,7 +254,7 @@ int ModificarDatoEmpleado(Employee listado[], int tam)
                 case 2:
                     printf("\n\t\t Ingrese nuevo apellido : ");
                     fflush(stdin);
-                    scanf("%[^\n] ", listado[i].apellido);
+                    scanf("%[^\n]", listado[i].apellido);
                     retorno=0;
                 break;
 
@@ -265,6 +272,7 @@ int ModificarDatoEmpleado(Employee listado[], int tam)
 
 
             }
+            break;
         }
 
     }
